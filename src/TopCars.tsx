@@ -1,15 +1,26 @@
 import React from 'react';
 
-export type TopCarsTape = {
+export type NewTopCarsType = {
+    topCars: TopCarsType[]
+}
+type TopCarsType = {
     manufac: string,
     model: string
 }
-const TopCars = () => {
+export const TopCars = (props: NewTopCarsType) => {
     return (
-        <div>
-            Cars
-        </div>
+        <table>
+            {props.topCars.map((objTopCars, index: number) => {
+                return (
+                    <tr>
+                        <th>{index + 1}{objTopCars.manufac}</th>
+                        <td>{objTopCars.model}</td>
+                    </tr>
+
+                )
+            })}
+        </table>
     );
 };
 
-export default TopCars;
+
